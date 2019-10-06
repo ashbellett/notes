@@ -32,6 +32,8 @@ A Markov process is described by:
 \[ \text{P}(S_{t+1} = s' | S_t = s_t, S_{t-1} = s_{t-1}, S_{t-2} = s_{t-2}, ...) = \text{P}(S_{t+1} = s' | S_t = s_t) \]
 The state transition probability matrix $ P_{s,s'} $ gives the probability of transitioning from state $ s $ to state $ s' $:
 \[ P_{s,s'} = \text{P}(S_{t+1} = s' | S_t = s) \]
+% TODO: Add example state diagram with labels
+% TODO: Explain labels using state space and state transition probability matrix
 
 \subsection{Markov reward process}
 A Markov reward process is described by:
@@ -80,7 +82,7 @@ From the law of total expectation, $ \text{E}(X) = \text{E}(\text{E}(X|Y)) $:
 & = \text{E}(v(s'))
 \end{split}
 \end{equation*}
-The Bellman equation for the state value function $ v(s) $ is:
+The Bellman expectation equation for the state value function $ v(s) $ is:
 \begin{equation*}
 \begin{split}
 v(s) & = \text{E}(R_{t+1} + \gamma v(s') | S_t = s) \\
@@ -88,6 +90,9 @@ v(s) & = \text{E}(R_{t+1} + \gamma v(s') | S_t = s) \\
  & = R_s + \gamma \sum_{s' \in \mathcal{S}} P_{s,s'} v(s')
 \end{split}
 \end{equation*}
+% TODO: Add Bellman look-ahead diagram
+% TODO: Derive Bellman expectation equation from diagram
+% TODO: Add example state diagram and solve
 
 \subsection{Markov decision process}
 A Markov decision process is described by:
@@ -96,7 +101,7 @@ A Markov decision process is described by:
     \item a finite set of rewards $ \mathcal{R} \subset \mathbb{R} $
     \item a finite set of actions $ \mathcal{A} $
     \item a state transition probability matrix $ P_{s,s'}^a $
-    \item a policy $ \pi \in [0,1] $
+    \item a policy distribution $ \pi \in [0,1] $
     \item a reward function $r: \mathcal{S} \to \mathcal{R} $
     \item a discount factor $ \gamma \in [0, 1] $
 \end{itemize}
@@ -131,7 +136,7 @@ From the law of total expectation, $ \text{E}(X) = \text{E}(\text{E}(X|Y)) $:
 & = \text{E}_{\pi}(v_{\pi}(s'))
 \end{split}
 \end{equation*}
-The Bellman equation for the state value function $ v_{\pi}(s) $ under policy $\pi $ is:
+The Bellman expectation equation for the state value function $ v_{\pi}(s) $ under policy $\pi $ is:
 \begin{equation*}
 \begin{split}
 v_{\pi}(s) & = \text{E}_{\pi}(R_{t+1} + \gamma v_{\pi}(s') | S_t = s) \\
@@ -154,7 +159,7 @@ From the law of total expectation, $ \text{E}(X) = \text{E}(\text{E}(X|Y,Z)) $:
 & = \text{E}_{\pi}(q_{\pi}(s',a'))
 \end{split}
 \end{equation*}
-The Bellman equation for the action-state value function $ q_{\pi}(s,a) $ under policy $\pi $ is:
+The Bellman expectation equation for the action-state value function $ q_{\pi}(s,a) $ under policy $\pi $ is:
 \begin{equation*}
 \begin{split}
 q_{\pi}(s,a) & = \text{E}_{\pi}(R_{t+1} + \gamma q_{\pi}(s',a') | S_t = s, A_t = a) \\
@@ -166,14 +171,35 @@ The state value function $ v_{\pi} $ can be written in terms of the action-state
 \[ v_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s)q_{\pi}(s,a) \]
 Similarly, the action-state value function $ q_{\pi} $ can be written in terms of the state value function $ v_{\pi} $:
 \[ q_{\pi}(s,a) = R_s^a + \gamma \sum_{s' \in \mathcal{S}} P_{s,s'}^a v_{\pi}(s) \]
+% TODO: Add Bellman look-ahead diagrams
+% TODO: Derive Bellman expectation equations from diagrams
+% TODO: Add example state diagram and solve
 
-\section{Policy Optimisation}
+\section{Model-Based Policy Optimisation}
 
 \subsection{Policy Evaluation}
+
+% TODO: Bellman optimality equations
+% TODO: Full Bellman look-ahead diagrams
+% TODO: Derive Bellman optimality equations from diagrams
 
 \subsection{Policy Iteration}
 
 \subsection{Value Iteration}
+
+\section{Model-Free Policy Evaluation}
+
+\subsection{Monte Carlo Learning}
+
+\subsection{Temporal Difference Learning}
+
+\section{Model-Free Policy Optimisation}
+
+\section{Value Approximation}
+
+\section{Policy Gradient Methods}
+
+\section{Actor-Critic Methods}
 
 %\begin{tikzpicture}
 %    \draw (2.5,-2) circle [radius=0.5];

@@ -2,7 +2,14 @@
 \contentsline {subsection}{\numberline {1.1}Markov process}{1}% 
 \contentsline {subsection}{\numberline {1.2}Markov reward process}{1}% 
 \contentsline {subsection}{\numberline {1.3}Markov decision process}{2}% 
-\contentsline {section}{\numberline {2}Policy Optimisation}{4}% 
+\contentsline {section}{\numberline {2}Model-Based Policy Optimisation}{4}% 
 \contentsline {subsection}{\numberline {2.1}Policy Evaluation}{4}% 
 \contentsline {subsection}{\numberline {2.2}Policy Iteration}{4}% 
 \contentsline {subsection}{\numberline {2.3}Value Iteration}{4}% 
+\contentsline {section}{\numberline {3}Model-Free Policy Evaluation}{4}% 
+\contentsline {subsection}{\numberline {3.1}Monte Carlo Learning}{4}% 
+\contentsline {subsection}{\numberline {3.2}Temporal Difference Learning}{4}% 
+\contentsline {section}{\numberline {4}Model-Free Policy Optimisation}{4}% 
+\contentsline {section}{\numberline {5}Value Approximation}{4}% 
+\contentsline {section}{\numberline {6}Policy Gradient Methods}{4}% 
+\contentsline {section}{\numberline {7}Actor-Critic Methods}{4}% 
