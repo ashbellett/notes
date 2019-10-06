@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Markov processes}{1}% 
+\contentsline {subsection}{\numberline {1.1}Markov process}{1}% 
+\contentsline {subsection}{\numberline {1.2}Markov reward process}{1}% 
+\contentsline {subsection}{\numberline {1.3}Markov decision process}{2}% 
+\contentsline {section}{\numberline {2}Policy Optimisation}{4}% 
+\contentsline {subsection}{\numberline {2.1}Policy Evaluation}{4}% 
+\contentsline {subsection}{\numberline {2.2}Policy Iteration}{4}% 
+\contentsline {subsection}{\numberline {2.3}Value Iteration}{4}% 

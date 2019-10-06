@@ -16,17 +16,33 @@
 \thispagestyle{empty}
 \setcounter{page}{0}
 \newpage
+\tableofcontents
+\setcounter{page}{0}
+\newpage
 
 \section{Markov processes}
 
 \subsection{Markov process}
-A Markov process is described by a finite set of states $ \mathcal{S} $ and a state transition probability matrix $ P_{s,s'} $ where $ s, s' \in \mathcal{S} $. A sequence of random variables $ \{S_t \in \mathcal{S} \} $ follow the Markov property: the next state $ S_{t+1} $ depends only on the current state $ S_t $:
+A Markov process is described by:
+\begin{itemize}
+    \item a finite set of states $ \mathcal{S} $
+    \item a state transition probability matrix $ P_{s,s'} $ where $ s, s' \in \mathcal{S} $
+\end{itemize}
+    A sequence of random variables $ \{S_t \in \mathcal{S} \} $ follow the Markov property: the next state $ S_{t+1} $ depends only on the current state $ S_t $:
 \[ \text{P}(S_{t+1} = s' | S_t = s_t, S_{t-1} = s_{t-1}, S_{t-2} = s_{t-2}, ...) = \text{P}(S_{t+1} = s' | S_t = s_t) \]
 The state transition probability matrix $ P_{s,s'} $ gives the probability of transitioning from state $ s $ to state $ s' $:
 \[ P_{s,s'} = \text{P}(S_{t+1} = s' | S_t = s) \]
 
 \subsection{Markov reward process}
-A Markov reward process is described by a finite set of states $ \mathcal{S} $, a finite set of rewards $ \mathcal{R} \subset \mathbb{R} $, a state transition probability matrix $ P_{s,s'} $, a function $r: \mathcal{S} \to \mathcal{R} $ and a discount factor $ \gamma \in [0, 1] $. The function $ r $ maps a state $  s \in \mathcal{S} $ to a reward $ R_t \in \mathcal{R} $:
+A Markov reward process is described by:
+\begin{itemize}
+    \item a finite set of states $ \mathcal{S} $
+    \item a finite set of rewards $ \mathcal{R} \subset \mathbb{R} $
+    \item a state transition probability matrix $ P_{s,s'} $
+    \item a reward function $r: \mathcal{S} \to \mathcal{R} $
+    \item a discount factor $ \gamma \in [0, 1] $
+\end{itemize}    
+The reward function $ r $ maps a state $  s \in \mathcal{S} $ to a reward $ R_t \in \mathcal{R} $:
 \[ R_t = r(s | S_t = s) \]
 The next expected reward $ R_s $ at state $ s $ is defined as:
 \begin{equation*}
@@ -35,7 +51,7 @@ R_s & =\text{E}(R_{t+1} | S_t = s) \\
  & = \sum_{s' \in \mathcal{S}} r(s') P_{s,s'}
 \end{split}
 \end{equation*}
-The return $ G_t \in \mathbb{R} $ is a sum of attenuated, future rewards represented as a geometric series:
+The return $ G_t \in \mathbb{R} $ is a sum of attenuated future rewards represented as a geometric series:
 \begin{equation*}
 \begin{split}
 G_t & = R_{t+1} + \gamma R_{t+2} + \gamma^{2} R_{t+3} + ... \\
@@ -74,7 +90,17 @@ v(s) & = \text{E}(R_{t+1} + \gamma v(s') | S_t = s) \\
 \end{equation*}
 
 \subsection{Markov decision process}
-A Markov decision process is described by a finite set of states $ \mathcal{S} $, a finite set of rewards $ \mathcal{R} \subset \mathbb{R} $, a finite set of actions $ \mathcal{A} $, a state transition probability matrix $ P_{s,s'}^a $, a policy $ \pi \in [0,1] $, a function $r: \mathcal{S} \to \mathcal{R} $ and a discount factor $ \gamma \in [0, 1] $. The state transition probability matrix $ P_{s,s'}^a $ gives the probabilities of transitioning from state $ s $ to state $ s' $ if action $ a \in \mathcal{A} $ is taken:
+A Markov decision process is described by:
+\begin{itemize}    
+    \item a finite set of states $ \mathcal{S} $
+    \item a finite set of rewards $ \mathcal{R} \subset \mathbb{R} $
+    \item a finite set of actions $ \mathcal{A} $
+    \item a state transition probability matrix $ P_{s,s'}^a $
+    \item a policy $ \pi \in [0,1] $
+    \item a reward function $r: \mathcal{S} \to \mathcal{R} $
+    \item a discount factor $ \gamma \in [0, 1] $
+\end{itemize}
+The state transition probability matrix $ P_{s,s'}^a $ gives the probabilities of transitioning from state $ s $ to state $ s' $ if action $ a \in \mathcal{A} $ is taken:
 \[ P_{s,s'}^a = \text{P}(S_{t+1} = s' | S_t = s, A_t = a) \]
 The policy $ \pi $ maps a state $ s $ to the probability of selecting action $ a $:
 \[ \pi(a | s) = \text{P}(A_t = a | S_t = s) \]
@@ -140,6 +166,14 @@ The state value function $ v_{\pi} $ can be written in terms of the action-state
 \[ v_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s)q_{\pi}(s,a) \]
 Similarly, the action-state value function $ q_{\pi} $ can be written in terms of the state value function $ v_{\pi} $:
 \[ q_{\pi}(s,a) = R_s^a + \gamma \sum_{s' \in \mathcal{S}} P_{s,s'}^a v_{\pi}(s) \]
+
+\section{Policy Optimisation}
+
+\subsection{Policy Evaluation}
+
+\subsection{Policy Iteration}
+
+\subsection{Value Iteration}
 
 %\begin{tikzpicture}
 %    \draw (2.5,-2) circle [radius=0.5];
