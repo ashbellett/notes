@@ -1,0 +1,222 @@
+\documentclass{article}
+\title{\textbf{Probability and Statistics}}
+\author{Ash Bellett}
+\date{}
+\usepackage{titling}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+\begin{document}
+\clearpage
+\maketitle
+\thispagestyle{empty}
+\setcounter{page}{0}
+\newpage
+\tableofcontents
+\setcounter{page}{0}
+\newpage
+
+\section{Probability Theory}
+
+%\subsection{Information and Uncertainty}
+%
+%Uncertainty refers to the absence of information or possession of imperfect information. Absence of information can be caused by non-observable or partially-observable environments where information cannot be obtained. Imperfect information can arise from stochastic processes which introduce randomness. Probability is a measure of uncertainty.
+
+\subsection{Probabilistic Experiments}
+
+\subsubsection{Experiments}
+
+An experiment is a process of observation where the output cannot be predicted with certainty due to random effects.
+
+\subsubsection{Trials}
+
+A trial is a single performance of an experiment.
+
+\subsubsection{Outcomes}
+
+An outcome is an observed output of a trial.
+
+\subsubsection{Samples}
+
+A sample is a set of outcomes. The sample space $\Omega$ is the set of all possible outcomes of an experiment.
+
+\subsubsection{Events}
+
+An event $A$ is a subset of outcomes in a sample space $\Omega$.
+\[A \subseteq \Omega\]
+The event space $\mathcal{F}$ is the set of all possible events.
+\[A \in \mathcal{F}\]
+The axioms of set theory apply to events:
+\begin{itemize}
+\item The complement $A'$ of an event $A$ is the set of outcomes in the sample space $\Omega$ that are not in $A$.
+\[A'= \{x \ | \ x \in \Omega \ \mathrm{and} \ x \notin A\} \]
+\item The union of events $A_1 \cup A_2$ is the set of outcomes in $A_1$, $A_2$ or both.
+\[A_1 \cup A_2 = \{x \ | \ x \in A_1 \ \mathrm{or} \ x \in A_2\} \]
+\item The intersection of events $A_1 \cap A_2$ is the set of outcomes in both $A_1$ and $A_2$.
+\[A_1 \cap A_2 = \{x \ | \ x \in A_1 \ \mathrm{and} \ x \in A_2\} \]
+\item The relative complement of event $A_1$ in event $A_2$ is the set of outcomes in $A_2$ that are not in $A_1$.
+\[A_2 \setminus A_1 = \{x \ | \ x \in A_2 \ \mathrm{and} \ x \notin A_1\}\]
+\end{itemize}
+The event consisting of no outcomes is called the null event $\varnothing$. If events $A_1, A_2, ...$ have no outcomes in common then $A_1, A_2, ...$ are disjoint events (mutually exclusive).
+\[A_1 \cap A_2 \cap ... = \varnothing \]
+
+\subsubsection{Probability}
+
+A probability measure $P:\mathcal{F}\rightarrow \mathbb{R}$ is a function that assigns each event in the event space to a real number.
+
+\subsection{Axioms}
+
+\subsubsection{First axiom: non-negative, real}
+
+The probability of an event is a non-negative real number.
+\[P(A) \geq 0 \ \forall A \in \mathcal{F}\]
+This axiom means that the smallest probability of an event is 0 (impossible events). It does not specify an upper bound, however a theorem does.
+
+\subsubsection{Second axiom: unitarity}
+
+The probability that at least one outcome in the sample space will occur is 1.
+\[P(\Omega)=1\]
+This axiom means that it is certain that an outcome will occur from observing an experiment.
+
+\subsubsection{Third axiom: countable additivity}
+
+If $A_1, A_2, ...$ is an infinite set of disjoint events in a sample space $\Omega$:
+\[P(A_1 \cup A_2 \cup ...) = \sum_{i=1}^\infty P(A_i)\]
+This axiom forms a relationship between a set of disjoint events in a sample space and the individual probabilities of each event.
+
+\subsection{Theorems}
+
+\subsubsection{Probability of the empty set}
+
+The probability of the null event is 0.
+\[P(\varnothing)=0\]
+\textit{Proof}: Let an infinite set of events be $\{A_i=\varnothing \}_{i=1}^\infty$. Since $\bigcup_{i=1}^\infty \varnothing = \varnothing$ and substituting $A_i$ into the third axiom:
+\begin{equation}
+\begin{split}
+P(\bigcup_{i=1}^\infty \varnothing) & = \sum_{i=1}^\infty P(\varnothing) \\
+P(\varnothing) & = \sum_{i=1}^\infty P(\varnothing)
+\end{split}
+\end{equation}
+The only solution to this equation is \[P(\varnothing)=0\].
+
+\subsubsection{Additivity}
+
+Given a finite set of $n$ disjoint events ${A_1, A_2, ... A_n}$ in a sample space $\Omega$:
+\[P(\bigcup_{i=1}^n A_i) = \sum_{i=1}^n P(A_i)\]
+\textit{Proof}: Let an infinite set of disjoint events be $E_1 = A_1, E_2 = A_2, ... , E_n = A_n, E_{n+1} = \varnothing, E_{n+2} = \varnothing, ... \ $. Substituting this into the third axiom:
+\begin{equation}
+\begin{split}
+P(\bigcup_{i=1}^\infty E_i) & = \sum_{i=1}^\infty P(E_i) \\
+ & =\sum_{i=1}^n P(E_i) + \sum_{i=n+1}^\infty P(E_i) \\
+ & =\sum_{i=1}^n P(E_i) + \sum_{i=n+1}^\infty P(\varnothing) \\
+ & =\sum_{i=1}^n P(E_i) + \sum_{i=n+1}^\infty 0 \\
+ & =\sum_{i=1}^n P(E_i) \\
+P(\bigcup_{i=1}^n A_i) & = \sum_{i=1}^n P(A_i)
+\end{split}
+\end{equation}
+
+\subsubsection{Monotonicity}
+
+If an event $A_1$ is a subset of or equal to another event $A_2$ which is a subset of or equal to a sample space $\Omega$, then the probability of $A_1$ occurring is less than or equal to the probability of $A_2$ occurring.
+\[\mathrm{If} \ A_1 \subseteq A_2 \subseteq \Omega \ \mathrm{then} \ P(A_1) \leq P(A_2)\]
+\textit{Proof}: Let event $A_1$ be a subset of or equal to event $A_2$. The event $A_2 \setminus A_1$ is the set difference of $A_2$ and $A_1$ and is the set of outcomes in $A_2$ that are not in $A_1$. The union of $A_1$ and $A_2 \setminus A_1$ is equal to $A_2$.
+\[A_2=A_1 \cup (A_2 \setminus A_1)\]
+Taking probabilities of both sides:
+\[P(A_2)=P(A_1 \cup (A_2 \setminus A_1))\]
+From the probability theorem of additivity where $n=2$:
+\[P(A_2)=P(A_1) + P(A_2 \setminus A_1)\]
+From the first axiom, $P(A_2 \setminus A_1) \geq 0$. Therefore, $P(A_1) \leq P(A_2)$. 
+
+\subsubsection{Complement rule}
+
+If $A$ is an event in a sample space $\Omega$, then the probability of the complement of $A$ is given by:
+\[P(A')=1-P(A)\]
+\textit{Proof}: Let event $A$ be a subset of or equal to a sample space $\Omega$. Then $S=A \cup A'$ and $A$ and $A'$ are disjoint events. From the first axiom:
+\[P(\Omega) = P(A \cup A') = 1\]
+From the third axiom:
+\[P(A \cup A') = P(A)+P(A') = 1\]
+Rearranging to make $P(A')$ the subject:
+\[P(A') = 1-P(A)\]
+
+\subsubsection{Numeric bounds}
+
+If $A$ is an event in a sample space $\Omega$, then the probability of $A$ is bounded between 0 and 1.
+\[0\leq P(A) \leq 1\]
+\textit{Proof}: From the first axiom and the complement rule:
+\[1-P(A) \geq 0\]
+Rearranging to make $P(A)$ the subject:
+\[P(A) \leq 1\]
+From the first axiom:
+\[0 \leq P(A) \leq 1\]
+
+\subsubsection{Sum rule}
+
+If $A_1$ and $A_2$ are events in a sample space $\Omega$, the probability that either $A_1$ or $A_2$ will occur is the sum of the probabilities that $A_1$ will occur and that $A_2$ will occur minus the probability that both $A_1$ and $A_2$ will occur.
+\[P(A_1 \cup A_2)=P(A_1)+P(A_2)-P(A_1 \cap A_2)\]
+\textit{Proof}: From the third axiom
+
+\subsubsection{Probabilities from elementary events}
+
+\subsubsection{Equally likely outcomes}
+
+
+\section{Independence and Conditional Probability}
+
+\subsection{Independent Events}
+\subsection{Conditional Probability}
+\subsection{Bayes' Theorem}
+
+\section{Counting}
+
+\subsection{Product Rule}
+
+If $E_1$ is an experiment with $n_1$ outcomes and $E_2$ is an experiment with $n_2$ outcomes, then the experiment which consists of performing $E_1$ and then $E_2$ has $n_1 n_2$ possible outcomes.
+
+\subsection{Permutations}
+\subsection{Combinations}
+
+\section{Univariate Random Variables}
+
+\subsection{Probability Distributions}
+\subsection{Random Variables}
+\subsection{Discrete Random Variables}
+\subsection{Continuous Random Variables}
+\subsection{Distribution Parameters}
+
+\section{Moments of Random Variables}
+
+\subsection{Measures of Centrality}
+\subsection{Measures of Variability}
+\subsection{Transformations of Centrality and Variability}
+
+\section{Bivariate Random Variables}
+
+\section {Product Moments of Bivariate Random Variables}
+\subsection{Covariance}
+\subsection{Independence}
+\subsection{Correlation}
+\subsection{Periodicity}
+\subsection{Moment Generating Functions}
+
+\section{Functions of Random Variables}
+
+\section{Sequences of Random Variables}
+
+\section{Sampling}
+
+\section{Estimation}
+
+\subsection{Point Estimators}
+\subsection{Interval Estimators}
+
+\section{Hypothesis Testing}
+
+\section{Variance Analysis}
+
+\section{Goodness-of-Fit Testing}
+
+\end{document}

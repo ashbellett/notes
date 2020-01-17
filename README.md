@@ -4,5 +4,5 @@ A collection of engineering notes.
 ```latexmk```
 ## Build
 ```shell
-pdflatex reinforcement-learning.tex
+pdflatex {topic}/{topic}.tex
 ```
