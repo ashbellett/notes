@@ -22,27 +22,23 @@
 
 \section{Probability Theory}
 
-%\subsection{Information and Uncertainty}
-%
-%Uncertainty refers to the absence of information or possession of imperfect information. Absence of information can be caused by non-observable or partially-observable environments where information cannot be obtained. Imperfect information can arise from stochastic processes which introduce randomness. Probability is a measure of uncertainty.
-
 \subsection{Probabilistic Experiments}
 
 \subsubsection{Experiments}
 
-An experiment is a process of observation where the output cannot be predicted with certainty due to random effects.
+An experiment is a repeatable process of observation where the output cannot be predicted with certainty due to random effects.
 
 \subsubsection{Trials}
 
-A trial is a single performance of an experiment.
+A trial is a single occurrence of an experiment. Multiple trials of an experiment can form a new experiment.
 
 \subsubsection{Outcomes}
 
 An outcome is an observed output of a trial.
 
-\subsubsection{Samples}
+\subsubsection{Sample space}
 
-A sample is a set of outcomes. The sample space $\Omega$ is the set of all possible outcomes of an experiment.
+The sample space $\Omega$ is the set of all possible outcomes of an experiment.
 
 \subsubsection{Events}
 
@@ -52,21 +48,37 @@ The event space $\mathcal{F}$ is the set of all possible events.
 \[A \in \mathcal{F}\]
 The axioms of set theory apply to events:
 \begin{itemize}
-\item The complement $A'$ of an event $A$ is the set of outcomes in the sample space $\Omega$ that are not in $A$.
-\[A'= \{x \ | \ x \in \Omega \ \mathrm{and} \ x \notin A\} \]
-\item The union of events $A_1 \cup A_2$ is the set of outcomes in $A_1$, $A_2$ or both.
-\[A_1 \cup A_2 = \{x \ | \ x \in A_1 \ \mathrm{or} \ x \in A_2\} \]
-\item The intersection of events $A_1 \cap A_2$ is the set of outcomes in both $A_1$ and $A_2$.
-\[A_1 \cap A_2 = \{x \ | \ x \in A_1 \ \mathrm{and} \ x \in A_2\} \]
-\item The relative complement of event $A_1$ in event $A_2$ is the set of outcomes in $A_2$ that are not in $A_1$.
-\[A_2 \setminus A_1 = \{x \ | \ x \in A_2 \ \mathrm{and} \ x \notin A_1\}\]
+\item The absolute complement $\overline{A}$ of an event $A$ is the set of outcomes in the sample space $\Omega$ that are not in $A$.
+\[\overline{A}= \{x \mid x \in \Omega \ \mathrm{and} \ x \notin A\} \]
+\item The union of events $A \cup B$ is the set of outcomes in $A$, $B$ or both.
+\[A \cup B = \{x \mid x \in A \ \mathrm{or} \ x \in B\} \]
+\item The intersection of events $A \cap B$ is the set of outcomes in both $A$ and $B$.
+\[A \cap B = \{x \mid x \in A \ \mathrm{and} \ x \in B\} \]
+\item The relative complement of event $A$ in event $B$ is the set of outcomes in $B$ that are not in $A$.
+\[B \setminus A = \{x \mid x \in B \ \mathrm{and} \ x \notin A\}\]
 \end{itemize}
-The event consisting of no outcomes is called the null event $\varnothing$. If events $A_1, A_2, ...$ have no outcomes in common then $A_1, A_2, ...$ are disjoint events (mutually exclusive).
-\[A_1 \cap A_2 \cap ... = \varnothing \]
+The properties of sets apply to events:
+\begin{itemize}
+\item The union and intersection of events is commutative.
+\[A \cup B = B \cup A\]
+\[A \cap B = B \cap A\]
+\item The union and intersection of events is associative.
+\[(A \cup B) \cup C = A \cup (B \cup C)\]
+\[(A \cap B) \cap C = A \cap (B \cap C)\]
+\item The union and intersection of events is distributive.
+\[A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\]
+\[A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\]
+\item The union and intersection of events follow De Morgan's laws.
+\[\overline{(A \cup B)} = \overline{A} \cap \overline{B}\]
+\[\overline{(A \cap B)} = \overline{A} \cup \overline{B}\]
+\end{itemize}
+The event consisting of no outcomes is called the null event $\varnothing$. If events $A$ and $B$ have no outcomes in common then $A$ and $B$ are disjoint events (mutually exclusive).
+\[A \cap B = \varnothing \]
+The event consisting of a single outcome is called an elementary event.
 
-\subsubsection{Probability}
+\subsubsection{Probability space}
 
-A probability measure $P:\mathcal{F}\rightarrow \mathbb{R}$ is a function that assigns each event in the event space to a real number.
+A probability space $(\Omega, \mathcal{F}, P)$ describes the characteristics of an experiment: the sample space $\Omega$, the event space $\mathcal{F}$ and the probability measure $P$. A probability measure $P:\mathcal{F}\rightarrow \mathbb{R}$ is a function that assigns each event in the event space to a real number. A probability measure must follow the axioms of probability.
 
 \subsection{Axioms}
 
@@ -85,30 +97,30 @@ This axiom means that it is certain that an outcome will occur from observing an
 \subsubsection{Third axiom: countable additivity}
 
 If $A_1, A_2, ...$ is an infinite set of disjoint events in a sample space $\Omega$:
-\[P(A_1 \cup A_2 \cup ...) = \sum_{i=1}^\infty P(A_i)\]
+\[P(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i)\]
 This axiom forms a relationship between a set of disjoint events in a sample space and the individual probabilities of each event.
 
 \subsection{Theorems}
 
-\subsubsection{Probability of the empty set}
+\subsubsection{Probability of an empty set}
 
 The probability of the null event is 0.
 \[P(\varnothing)=0\]
 \textit{Proof}: Let an infinite set of events be $\{A_i=\varnothing \}_{i=1}^\infty$. Since $\bigcup_{i=1}^\infty \varnothing = \varnothing$ and substituting $A_i$ into the third axiom:
-\begin{equation}
+\begin{equation*}
 \begin{split}
 P(\bigcup_{i=1}^\infty \varnothing) & = \sum_{i=1}^\infty P(\varnothing) \\
 P(\varnothing) & = \sum_{i=1}^\infty P(\varnothing)
 \end{split}
-\end{equation}
-The only solution to this equation is \[P(\varnothing)=0\].
+\end{equation*}
+The only solution to this equation is $P(\varnothing)=0$.
 
 \subsubsection{Additivity}
 
 Given a finite set of $n$ disjoint events ${A_1, A_2, ... A_n}$ in a sample space $\Omega$:
 \[P(\bigcup_{i=1}^n A_i) = \sum_{i=1}^n P(A_i)\]
 \textit{Proof}: Let an infinite set of disjoint events be $E_1 = A_1, E_2 = A_2, ... , E_n = A_n, E_{n+1} = \varnothing, E_{n+2} = \varnothing, ... \ $. Substituting this into the third axiom:
-\begin{equation}
+\begin{equation*}
 \begin{split}
 P(\bigcup_{i=1}^\infty E_i) & = \sum_{i=1}^\infty P(E_i) \\
  & =\sum_{i=1}^n P(E_i) + \sum_{i=n+1}^\infty P(E_i) \\
@@ -117,30 +129,30 @@ P(\bigcup_{i=1}^\infty E_i) & = \sum_{i=1}^\infty P(E_i) \\
  & =\sum_{i=1}^n P(E_i) \\
 P(\bigcup_{i=1}^n A_i) & = \sum_{i=1}^n P(A_i)
 \end{split}
-\end{equation}
+\end{equation*}
 
 \subsubsection{Monotonicity}
 
-If an event $A_1$ is a subset of or equal to another event $A_2$ which is a subset of or equal to a sample space $\Omega$, then the probability of $A_1$ occurring is less than or equal to the probability of $A_2$ occurring.
-\[\mathrm{If} \ A_1 \subseteq A_2 \subseteq \Omega \ \mathrm{then} \ P(A_1) \leq P(A_2)\]
-\textit{Proof}: Let event $A_1$ be a subset of or equal to event $A_2$. The event $A_2 \setminus A_1$ is the set difference of $A_2$ and $A_1$ and is the set of outcomes in $A_2$ that are not in $A_1$. The union of $A_1$ and $A_2 \setminus A_1$ is equal to $A_2$.
-\[A_2=A_1 \cup (A_2 \setminus A_1)\]
+If an event $A$ is a subset of or equal to another event $B$ which is a subset of or equal to a sample space $\Omega$, then the probability of $A$ occurring is less than or equal to the probability of $B$ occurring.
+\[\mathrm{If} \ A \subseteq B \subseteq \Omega \ \mathrm{then} \ P(A) \leq P(B)\]
+\textit{Proof}: Let event $A$ be a subset of or equal to event $B$. The event $B \setminus A$ is the set difference of $B$ and $A$ and is the set of outcomes in $B$ that are not in $A$. The union of $A$ and $B \setminus A$ is equal to $B$.
+\[B=A \cup (B \setminus A)\]
 Taking probabilities of both sides:
-\[P(A_2)=P(A_1 \cup (A_2 \setminus A_1))\]
+\[P(B)=P(A \cup (B \setminus A))\]
 From the probability theorem of additivity where $n=2$:
-\[P(A_2)=P(A_1) + P(A_2 \setminus A_1)\]
-From the first axiom, $P(A_2 \setminus A_1) \geq 0$. Therefore, $P(A_1) \leq P(A_2)$. 
+\[P(B)=P(A) + P(B \setminus A)\]
+From the first axiom, $P(B \setminus A) \geq 0$. Therefore, $P(A) \leq P(B)$. 
 
 \subsubsection{Complement rule}
 
 If $A$ is an event in a sample space $\Omega$, then the probability of the complement of $A$ is given by:
-\[P(A')=1-P(A)\]
-\textit{Proof}: Let event $A$ be a subset of or equal to a sample space $\Omega$. Then $S=A \cup A'$ and $A$ and $A'$ are disjoint events. From the first axiom:
-\[P(\Omega) = P(A \cup A') = 1\]
+\[P(\overline{A})=1-P(A)\]
+\textit{Proof}: Let event $A$ be a subset of or equal to a sample space $\Omega$. Then $S=A \cup \overline{A}$ and $A$ and $\overline{A}$ are disjoint events. From the first axiom:
+\[P(\Omega) = P(A \cup \overline{A}) = 1\]
 From the third axiom:
-\[P(A \cup A') = P(A)+P(A') = 1\]
-Rearranging to make $P(A')$ the subject:
-\[P(A') = 1-P(A)\]
+\[P(A \cup \overline{A}) = P(A)+P(\overline{A}) = 1\]
+Rearranging to make $P(\overline{A})$ the subject:
+\[P(\overline{A}) = 1-P(A)\]
 
 \subsubsection{Numeric bounds}
 
@@ -155,30 +167,123 @@ From the first axiom:
 
 \subsubsection{Sum rule}
 
-If $A_1$ and $A_2$ are events in a sample space $\Omega$, the probability that either $A_1$ or $A_2$ will occur is the sum of the probabilities that $A_1$ will occur and that $A_2$ will occur minus the probability that both $A_1$ and $A_2$ will occur.
-\[P(A_1 \cup A_2)=P(A_1)+P(A_2)-P(A_1 \cap A_2)\]
-\textit{Proof}: From the third axiom
+If $A$ and $B$ are events in a sample space $\Omega$, the probability that either $A$ or $B$ will occur is the sum of the probabilities that $A$ will occur and that $B$ will occur minus the probability that both $A$ and $B$ will occur.
+\[P(A \cup B)=P(A)+P(B)-P(A \cap B)\]
+\textit{Proof}: Let events $A$ and $B$ be a subset of or equal to a sample space $\Omega$. The probability of $A$ or $B$ can be expressed as:
+\[P(A \cup B) = P(A) + P(B \setminus A)\]
+Making the substitution $P(B \setminus A) = P(B) - P(A \cap B)$:
+\[P(A \cup B) = P(A) + P(B) - P(A \cap B)\]
 
-\subsubsection{Probabilities from elementary events}
+\subsubsection{Probability from elementary events}
 
-\subsubsection{Equally likely outcomes}
+The probability of an event $A$ in a sample space $\Omega$ is equal to the sum of the probabilities of its elementary events $\{E_i\}$.
+\[P(A)=\sum_{i=1}^\infty E_i\]
+\textit{Proof}: Any event $A$ in a sample space $\Omega$ can be expressed as the union of its elementary events $\{E_i\}$.
+\[A=\bigcup_{i=1}^\infty E_i\]
+Substituting into the third axiom:
+\begin{equation*}
+\begin{split}
+P(A) & = P(\bigcup_{i=1}^\infty E_i) \\
+ & = \sum_{i=1}^\infty E_i
+\end{split}
+\end{equation*}
 
-
-\section{Independence and Conditional Probability}
-
-\subsection{Independent Events}
-\subsection{Conditional Probability}
-\subsection{Bayes' Theorem}
-
+\newpage
 \section{Counting}
 
 \subsection{Product Rule}
 
-If $E_1$ is an experiment with $n_1$ outcomes and $E_2$ is an experiment with $n_2$ outcomes, then the experiment which consists of performing $E_1$ and then $E_2$ has $n_1 n_2$ possible outcomes.
+If an experiment $E$ consists of $k$ experiments $E_1, E_2,..., E_k$ performed sequentially where each experiment $E_i$ has $n_i$ possible outcomes, then experiment $E$ will have $\prod_{i=1}^k n_i$ possible outcomes.
 
 \subsection{Permutations}
+
+A permutation is an ordered subset.
+
+\subsubsection{Permutations with repetition}
+
+The number of permutations containing $k$ of $n$ distinct objects with repetition is $n^k$.\\
+\textit{Derivation}: Given a set $N$ of $n$ distinct objects, a new set $K$ of $k \leq n$ ordered objects is to be constructed. The new set $K$ is constructed by selecting an object from $N$. The object that is selected remains in $N$ for subsequent selections. The selection process is repeated $k$ times, where each selection is taken from $n$ possible objects. The number of permutations of $K$ is $n^k$. When the size of $K$ is equal to $N$, $k=n$, the number of permutations is $n^n$.
+
+\subsubsection{Permutations without repetition}
+
+The number of permutations containing $k$ of $n$ distinct objects without repetition is:
+\[^n P_r = \frac{n!}{(n-k)!}\]
+\textit{Derivation}: Given a set $N$ of $n$ distinct objects, a new set $K$ of $k \leq n$ ordered objects is to be constructed. The new set $K$ is constructed by selecting an object from $N$. The object that is selected is removed from $N$ for subsequent selections. The selection process is repeated $k$ times. On the first selection, there a $n$ possible objects to select from. On the second selection, there are $n-1$ possible objects to select from. On the $k^{\mathrm{th}}$ selection, there are $n-k+1$ possible objects to select from. The number of permutations of $K$ is:
+\[n(n-1)...(n-k+1)\]
+Alternatively, this expression can be written as:
+\[\frac{1(2)...(n)}{1(2)...(n-k)}\]
+\[=\frac{n!}{(n-k)!}\]
+When the size of $K$ is equal to $N$, $k=n$, the number of permutations is $n!$.
+
+\subsection{Permutations of non-distinct objects}
+
+Given a set $N$ of $n$ non-distinct objects, where there are $m$ groups of distinct objects and each group $i$ has $n_i$ objects.
+\[n=\sum_{i=1}^m n_i\]
+A new set $K$ of $n$ ordered objects is to be constructed. The new set $K$ is constructed by selecting an object from $N$. The object that is selected is removed from $N$ for subsequent selections. The selection process is repeated $n$ times. The number of permutations of $K$ is $\frac{n!}{n_1!n_2!...n_m!}$.
+
 \subsection{Combinations}
 
+A combination is an unordered subset.
+
+\subsubsection{Combinations without repetition}
+
+The number of combinations containing $k$ of $n$ distinct objects without repetition is:
+\[\binom{n}{k}=\frac{n!}{(n-k)!k!}\]
+
+\subsubsection{Combinations with repetition}
+
+The number of combinations containing $k$ of $n$ distinct objects with repetition is:
+\[\binom{n+k-1}{k}=\frac{(n+k-1)!}{(n-1)!k!}\]
+
+\newpage
+\section{Conditional Probability and Independence}
+
+\subsection{Conditional Probability}
+
+The conditional probability of an event $A$ occurring given that event $B$ has occurred is:
+\[P(A \mid B)=\frac{P(A \cap B)}{P(B)}\]
+The conditional probability $P(A \mid B)$ is a new probability function on the sample space $\Omega$ such that outcomes not in $B$ have zero probability and the probability of outcomes in $B$ are scaled such that their relative magnitudes are preserved and the probability measure is consistent with the axioms of probability.\\
+\textit{Derivation}: Let $\Omega$ be a sample space with elementary events $\{E\}$. The event $B \subseteq \Omega$ has occurred. New probabilities are to be assigned to the set of elementary events $\{E\}$. The elementary events $E \in \overline{B}$ will have zero probability as $B$ has occurred. The probability of elementary events $E \in B$ will preserve their relative magnitudes, represented by a scaling factor $\alpha$.
+\[P(E \mid B) = \alpha P(E) \ \forall E \in B\]
+\[P(E \mid B) = 0 \ \forall E \in \overline{B}\]
+Substituting into the third axiom:
+\begin{equation*}
+\begin{split}
+1 = & \sum_{E \in \Omega} P(E \mid B)\\
+1 = & \sum_{E \in B} P(E \mid B) + \sum_{E \in \overline{B}} P(E \mid B)\\
+1 = & \ \alpha \sum_{E \in B} P(E)
+\end{split}
+\end{equation*}
+Using the probability from elementary events theorem:
+\begin{equation*}
+\begin{split}
+1 = & \ \alpha P(B)\\
+\Rightarrow \alpha & = \frac{1}{P(B)}
+\end{split}
+\end{equation*}
+The conditional probability of an elementary event given that event $B$ has occurred $P(E \mid B)$ is given by:
+\[P(E \mid B) = \frac{P(E)}{P(B)} \ \forall E \in B\]
+\[P(E \mid B) = 0 \ \forall E \in \overline{B}\]
+An event $A \subseteq \Omega$ is comprised of $A \cap B$ and $A \cap \overline{B}$.
+\[A= (A \cap B) \cup (A \cap \overline{B})\]
+The conditional probability of $A$ given that $B$ has occurred can be expressed as:
+\begin{equation*}
+\begin{split}
+P(A \mid B) & = \sum_{E \in A \cap B} P(E \mid B) + \sum_{E \in A \cap \overline{B}} P(E \mid B)\\
+& = \sum_{E \in A \cap B} \frac{P(E)}{P(B)}\\
+\end{split}
+\end{equation*}
+Using the probability from elementary events theorem:
+\[P(A \mid B) = \frac{P(A \cap B)}{P(B)}\]
+
+\subsection{Independent Events}
+
+Events $A$ and $B$ in a sample space $\Omega$ are independent if:
+\[P(A\cap B) = P(A)P(B)\]
+
+\subsection{Bayes' Theorem}
+
+\newpage
 \section{Univariate Random Variables}
 
 \subsection{Probability Distributions}
@@ -187,12 +292,14 @@ If $E_1$ is an experiment with $n_1$ outcomes and $E_2$ is an experiment with $n
 \subsection{Continuous Random Variables}
 \subsection{Distribution Parameters}
 
-\section{Moments of Random Variables}
+\newpage
+\section{Moments of Univariate Random Variables}
 
 \subsection{Measures of Centrality}
 \subsection{Measures of Variability}
 \subsection{Transformations of Centrality and Variability}
 
+\newpage
 \section{Bivariate Random Variables}
 
 \section {Product Moments of Bivariate Random Variables}
@@ -202,21 +309,28 @@ If $E_1$ is an experiment with $n_1$ outcomes and $E_2$ is an experiment with $n
 \subsection{Periodicity}
 \subsection{Moment Generating Functions}
 
+\newpage
 \section{Functions of Random Variables}
 
+\newpage
 \section{Sequences of Random Variables}
 
+\newpage
 \section{Sampling}
 
+\newpage
 \section{Estimation}
 
 \subsection{Point Estimators}
 \subsection{Interval Estimators}
 
+\newpage
 \section{Hypothesis Testing}
 
+\newpage
 \section{Variance Analysis}
 
+\newpage
 \section{Goodness-of-Fit Testing}
 
 \end{document}
