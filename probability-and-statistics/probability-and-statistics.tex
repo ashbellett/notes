@@ -20,13 +20,157 @@
 \setcounter{page}{0}
 \newpage
 
+\section{Set Theory}
+
+\subsection{Sets}
+
+A set is an unordered collection of distinct objects. Objects that belong to a set are called the elements of that set.
+
+\subsubsection{Notation}
+
+Sets can be represented using enumeration where the collection of objects is listed within curly brackets: $A=\{0, 1, ...\}$. Sets can also be represented using conditions with set-builder notation: $A=\{x \mid x \geq 0\}$. The vertical bar in set-builder notation means "such that" and the right-hand side is a condition to define the elements in the set.
+
+\subsubsection{Membership}
+
+If an object $a$ is an element of the set $A$ then $a$ is in $A$: $a \in A$. If an object $a$ is not an element of the set $A$ then $a$ is not in $A$: $a \notin A$.
+
+\subsubsection{Empty Set}
+
+If a set has no elements, it is an empty set $\varnothing$.
+
+\subsubsection{Subsets}
+
+If every element of a set $A$ is an element of another set $B$ then $A$ is a subset of $B$: $A \subseteq B$. If every element of a set $A$ is an element of another set $B$, and every element of $B$ is an element of $A$, then $A$ and $B$ are equal: $A=B$. If every element of a set $A$ is an element of another set $B$ but not equal to $B$, then $A$ is a proper subset of $B$: $A \subset B$.
+
+\subsubsection{Partitions}
+
+A partition of a set is a set of non-empty subsets of the set such that every element of the set is in exactly one of the subsets. The subsets are pairwise disjoint which means that no two subsets contain the same element.
+
+\subsubsection{Power Sets}
+
+The power set of a set is the set of all subsets of the set. The power set contains both the set itself and the empty set since both of these sets are subsets of the set. The power set of a finite set with $n$ element has $2^n$ elements.
+
+\subsubsection{Cardinality}
+
+The cardinality of a set $A$ is the number of elements in the set: $\vert A \vert$. The cardinality of an empty set is zero.
+
+\subsection{Operations}
+
+\subsubsection{Absolute Complement}
+
+The absolute complement $\overline{A}$ of a set $A$ is the set of elements that are not in $A$.
+\[\overline{A}= \{x \mid x \notin A\} \]
+
+\subsubsection{Union}
+
+The union of sets $A \cup B$ is the set of elements in $A$, $B$ or both.
+\[A \cup B = \{x \mid x \in A \ \mathrm{or} \ x \in B\} \]
+
+\subsubsection{Intersection}
+
+The intersection of sets $A \cap B$ is the set of elements in both $A$ and $B$.
+\[A \cap B = \{x \mid x \in A \ \mathrm{and} \ x \in B\} \]
+
+\subsubsection{Relative Complement}
+
+The relative complement of set $A$ in set $B$ is the set of elements in $B$ that are not in $A$.
+\[B \setminus A = \{x \mid x \in B \ \mathrm{and} \ x \notin A\}\]
+
+\subsubsection{Symmetric Difference}
+
+The symmetric difference of sets $A$ and $B$ is the set of elements in $A$ or $B$ and not in $A$ and $B$.
+\[A \ominus B = \{x \mid x \in A \ \mathrm{and} \ x \in B \ \mathrm{and} \ x \notin A \cup B\}\]
+
+\subsubsection{Cartesian Product}
+
+The Cartesian product of sets $A \times B$ is the set of all ordered pairs $(a,b)$ where $a$ is in $A$ and $b$ is in $B$.
+\[A \times B = \{(a,b) \mid a \in A \ \mathrm{and} \ b \in B\}\]
+
+\subsection{Properties}
+
+\subsubsection{Commutativity}
+
+The union and intersection of sets is commutative.
+\[A \cup B = B \cup A\]
+\[A \cap B = B \cap A\]
+
+\subsubsection{Associativity}
+
+The union and intersection of sets is associative.
+\[(A \cup B) \cup C = A \cup (B \cup C)\]
+\[(A \cap B) \cap C = A \cap (B \cap C)\]
+
+\subsubsection{Distributivity}
+
+The union and intersection of sets is distributive.
+\[A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\]
+\[A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\]
+
+\subsubsection{De Morgan's Laws}
+
+The union and intersection of sets follow De Morgan's laws.
+\[\overline{(A \cup B)} = \overline{A} \cap \overline{B}\]
+\[\overline{(A \cap B)} = \overline{A} \cup \overline{B}\]
+
+\newpage
+\section{Counting Techniques}
+
+\subsection{Product Rule of Counting}
+
+If an experiment $E$ consists of $k$ experiments $E_1, E_2,..., E_k$ performed sequentially where each experiment $E_i$ has $n_i$ possible outcomes, then experiment $E$ will have $\prod_{i=1}^k n_i$ possible outcomes.
+
+\subsection{Permutations}
+
+A permutation is an ordered subset.
+
+\subsubsection{Permutations with repetition}
+
+The number of permutations containing $k$ of $n$ distinct objects with repetition is $n^k$.\\
+\textit{Derivation}: Given a set $N$ of $n$ distinct objects, a new set $K$ of $k \leq n$ ordered objects is to be constructed. The new set $K$ is constructed by selecting an object from $N$. The object that is selected remains in $N$ for subsequent selections. The selection process is repeated $k$ times, where each selection is taken from $n$ possible objects. The number of permutations of $K$ is $n^k$. When the size of $K$ is equal to $N$, $k=n$, the number of permutations is $n^n$.
+
+\subsubsection{Permutations without repetition}
+
+The number of permutations containing $k$ of $n$ distinct objects without repetition is:
+\[^n P_r = \frac{n!}{(n-k)!}\]
+\textit{Derivation}: Given a set $N$ of $n$ distinct objects, a new set $K$ of $k \leq n$ ordered objects is to be constructed. The new set $K$ is constructed by selecting an object from $N$. The object that is selected is removed from $N$ for subsequent selections. The selection process is repeated $k$ times. On the first selection, there a $n$ possible objects to select from. On the second selection, there are $n-1$ possible objects to select from. On the $k^{\mathrm{th}}$ selection, there are $n-k+1$ possible objects to select from. The number of permutations of $K$ is:
+\[n(n-1)...(n-k+1)\]
+Alternatively, this expression can be written as:
+\[\frac{1(2)...(n)}{1(2)...(n-k)}\]
+\[=\frac{n!}{(n-k)!}\]
+When the size of $K$ is equal to $N$, $k=n$, the number of permutations is $n!$.
+
+\subsubsection{Permutations of non-distinct objects}
+
+Given a set $N$ of $n$ non-distinct objects, where there are $m$ groups of distinct objects and each group $i$ has $n_i$ objects.
+\[n=\sum_{i=1}^m n_i\]
+A new set $K$ of $n$ ordered objects is to be constructed. The new set $K$ is constructed by selecting an object from $N$. The object that is selected is removed from $N$ for subsequent selections. The selection process is repeated $n$ times. The number of permutations of $K$ is $\frac{n!}{n_1!n_2!...n_m!}$.
+
+\subsection{Combinations}
+
+A combination is an unordered subset.
+
+\subsubsection{Combinations without repetition}
+
+The number of combinations containing $k$ of $n$ distinct objects without repetition is:
+\[\binom{n}{k}=\frac{n!}{(n-k)!k!}\]
+
+\subsubsection{Combinations with repetition}
+
+The number of combinations containing $k$ of $n$ distinct objects with repetition is:
+\[\binom{n+k-1}{k}=\frac{(n+k-1)!}{(n-1)!k!}\]
+
+\subsection{Binomial Theorem}
+
+\subsection{Multinomial Theorem}
+
+\newpage
 \section{Probability Theory}
 
 \subsection{Probabilistic Experiments}
 
 \subsubsection{Experiments}
 
-An experiment is a repeatable process of observation where the output cannot be predicted with certainty due to random effects.
+An experiment is a process of observation where the output cannot be predicted with certainty due to random effects.
 
 \subsubsection{Trials}
 
@@ -46,7 +190,7 @@ An event $A$ is a subset of outcomes in a sample space $\Omega$.
 \[A \subseteq \Omega\]
 The event space $\mathcal{F}$ is the set of all possible events.
 \[A \in \mathcal{F}\]
-The axioms of set theory apply to events:
+The operations of sets apply to events:
 \begin{itemize}
 \item The absolute complement $\overline{A}$ of an event $A$ is the set of outcomes in the sample space $\Omega$ that are not in $A$.
 \[\overline{A}= \{x \mid x \in \Omega \ \mathrm{and} \ x \notin A\} \]
@@ -188,52 +332,9 @@ P(A) & = P(\bigcup_{i=1}^\infty E_i) \\
 \end{split}
 \end{equation*}
 
-\newpage
-\section{Counting}
+\subsubsection{Equally-Likely Outcomes}
 
-\subsection{Product Rule}
-
-If an experiment $E$ consists of $k$ experiments $E_1, E_2,..., E_k$ performed sequentially where each experiment $E_i$ has $n_i$ possible outcomes, then experiment $E$ will have $\prod_{i=1}^k n_i$ possible outcomes.
-
-\subsection{Permutations}
-
-A permutation is an ordered subset.
-
-\subsubsection{Permutations with repetition}
-
-The number of permutations containing $k$ of $n$ distinct objects with repetition is $n^k$.\\
-\textit{Derivation}: Given a set $N$ of $n$ distinct objects, a new set $K$ of $k \leq n$ ordered objects is to be constructed. The new set $K$ is constructed by selecting an object from $N$. The object that is selected remains in $N$ for subsequent selections. The selection process is repeated $k$ times, where each selection is taken from $n$ possible objects. The number of permutations of $K$ is $n^k$. When the size of $K$ is equal to $N$, $k=n$, the number of permutations is $n^n$.
-
-\subsubsection{Permutations without repetition}
-
-The number of permutations containing $k$ of $n$ distinct objects without repetition is:
-\[^n P_r = \frac{n!}{(n-k)!}\]
-\textit{Derivation}: Given a set $N$ of $n$ distinct objects, a new set $K$ of $k \leq n$ ordered objects is to be constructed. The new set $K$ is constructed by selecting an object from $N$. The object that is selected is removed from $N$ for subsequent selections. The selection process is repeated $k$ times. On the first selection, there a $n$ possible objects to select from. On the second selection, there are $n-1$ possible objects to select from. On the $k^{\mathrm{th}}$ selection, there are $n-k+1$ possible objects to select from. The number of permutations of $K$ is:
-\[n(n-1)...(n-k+1)\]
-Alternatively, this expression can be written as:
-\[\frac{1(2)...(n)}{1(2)...(n-k)}\]
-\[=\frac{n!}{(n-k)!}\]
-When the size of $K$ is equal to $N$, $k=n$, the number of permutations is $n!$.
-
-\subsection{Permutations of non-distinct objects}
-
-Given a set $N$ of $n$ non-distinct objects, where there are $m$ groups of distinct objects and each group $i$ has $n_i$ objects.
-\[n=\sum_{i=1}^m n_i\]
-A new set $K$ of $n$ ordered objects is to be constructed. The new set $K$ is constructed by selecting an object from $N$. The object that is selected is removed from $N$ for subsequent selections. The selection process is repeated $n$ times. The number of permutations of $K$ is $\frac{n!}{n_1!n_2!...n_m!}$.
-
-\subsection{Combinations}
-
-A combination is an unordered subset.
-
-\subsubsection{Combinations without repetition}
-
-The number of combinations containing $k$ of $n$ distinct objects without repetition is:
-\[\binom{n}{k}=\frac{n!}{(n-k)!k!}\]
-
-\subsubsection{Combinations with repetition}
-
-The number of combinations containing $k$ of $n$ distinct objects with repetition is:
-\[\binom{n+k-1}{k}=\frac{(n+k-1)!}{(n-1)!k!}\]
+\subsection{Limits}
 
 \newpage
 \section{Conditional Probability and Independence}
@@ -281,7 +382,13 @@ Using the probability from elementary events theorem:
 Events $A$ and $B$ in a sample space $\Omega$ are independent if:
 \[P(A\cap B) = P(A)P(B)\]
 
+\subsection{Law of Total Probability}
+
+\[\]
+
 \subsection{Bayes' Theorem}
+
+\[\]
 
 \newpage
 \section{Univariate Random Variables}
@@ -308,6 +415,8 @@ Events $A$ and $B$ in a sample space $\Omega$ are independent if:
 \subsection{Correlation}
 \subsection{Periodicity}
 \subsection{Moment Generating Functions}
+
+\section{Vectors of Random Variables}
 
 \newpage
 \section{Functions of Random Variables}
